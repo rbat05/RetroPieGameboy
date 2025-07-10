@@ -1,17 +1,18 @@
 # RetroPi Portable Gaming Console
 A Raspberry Pi 3B+ Game Boy‑style build for plug‑and‑play retro gaming
 
-PHOTO HERE MATE
+PHOTOS HERE MATE
 
 # Table of Contents
 
 1. [Overview](#overview)
 2. [Features](#features)
+43. [Performance](#performance)
+3. [Design Showcase](#design-showcase)
 3. [Bill of Materials](#bill-of-materials)
 4. [3D‑Printed Parts](#3d-printed-parts)
 5. [Electronics & Wiring](#electronics--wiring)
 6. [Software Setup](#software-setup)
-7. [Performance](#performance)
 8. [Build Instructions](#build-instructions)
 9. [Roadmap](#roadmap)
 10. [License](#license)
@@ -30,6 +31,37 @@ This project documents the design and assembly of a hand‑held retro gaming con
 - Comprehensive build guide, parts list, and CAD files included
 - Fully open source under the GNU General Public License v3.0
 
+# Performance
+
+- 30 FPS on the ILI9341 display
+- Stable performance for most retro games
+- Can run games from systems up to the PlayStation 1 era
+- Temperature remains below 60 °C under sustained load with active cooling
+
+
+From my testing, the Raspberry Pi 3B+ can run most retro games at a stable 30 FPS on the ILI9341 display. Game performance may vary depending on the game and emulator used. The Pi 3B+ is capable of running games from systems up to the PlayStation 1 era, including Wipeout 3 Omega Collection, which runs at 30 FPS with barely any frame drops.
+
+# Design Showcase
+
+![Gameboy Showcase](cad/Shell%20v12.gif)
+
+<p align="center">
+  <img src="images/front_showcase.png" alt="Gameboy Front Showcase" width="350" style="margin:10px"/><br>
+  <sub>Front</sub>
+  <br><br>
+  <img src="images/side_showcase.png" alt="Gameboy Side Showcase" width="350" style="margin:10px"/><br>
+  <sub>Side</sub>
+</p>
+<p align="center">
+  <img src="images/Exploded.png" alt="Gameboy Exploded View" width="350" style="margin:10px"/><br>
+  <sub>Exploded View</sub>
+  <br><br>
+  <img src="images/Exploded_nofront.png" alt="Gameboy Exploded View without Front Shell" width="350" style="margin:10px"/><br>
+  <sub>Exploded View without Front Shell</sub>
+</p>
+
+[Design files](cad/Showcase_Drawings.pdf) available as PDFs in `\cad` folder.
+
 # Bill of Materials
 | Category | Item | Description | Quantity | Price ($NZ, Approx.) |
 |----------|------|-------------|----------|----------------------|
@@ -46,19 +78,43 @@ This project documents the design and assembly of a hand‑held retro gaming con
 |Miscellaneous| Fan | Dual Fan for active cooling | 1 | $5 |
 | | Wiring | Various wires for connections | - | $5 |
 || Soldering Supplies | Solder, flux, etc. | - | $5 |
-|| 3D Printing Filament | PLA or ABS for 3D-printed parts | - | $10 |
+|| 3D Printing Filament | PLA or ABS for 3D-printed parts | 90g | $10 |
 
 Total Estimated Cost: $170 NZD + Assembly (Approx.) \
-Refer to parts wiki for more details on each component and where to purchase.
+Refer to [parts wiki](https://github.com/rbat05/RetroPieGameboy/wiki/Parts) for more details on each component and where to purchase.
 
 # 3D-Printed Parts
-STLs and Fusion 360 source files are in /cad folder. \
+Total cost of 3D-printed parts is approximately $10 NZD, using about 90g of PLA filament. Time to print is around 20 hours total. 
+
+STLs, STEPs and Fusion 360 source files are in `/cad` folder. 
 
 The source file details the design of the Gameboy shell, including all dimensions and features. It shows how all components are to be assembled together. The shell is designed to be printed in 2 parts, the front and back. Both components can be printed without supports. 
 
-- [Gameboy Front]()
-- [Gameboy Back Cover]()
-- [Source File]()
+Infill and resolution settings for Ultimaker 2B+, set on "Fine" resolution.
+
+- **[Gameboy Front](cad/Top_Shell.stl)**
+  <br>
+  <img src="images/front_shell_printing.png" width="350" alt="Gameboy Front Shell Printing" />
+  - **Print Settings:** 30% infill, 0.1 mm resolution, PLA
+  - **Supports:** Not needed if printed on front face 
+  - **Adhesion:** Enable adhesion for best result
+  - **Material Used:** 52 g
+  - **Print Time:** 12 hours
+
+- **[Gameboy Back Cover](cad/Back_Plate.stl)**
+  <br>
+  <img src="images/back_printing.png" width="350" alt="Gameboy Back Shell Printing" />
+  - **Print Settings:** 20% infill, 0.1 mm resolution, PLA
+  - **Supports:** Not needed if printed on back flat side
+  - **Adhesion:** Not needed
+  - **Material Used:** 38 g
+  - **Print Time:** 8 hours 30 minutes
+
+If you'd like to modify the design, the following CAD files are available in the `/cad` folder:
+
+- **[Gameboy Front.step](cad/Top_Shell.step)** – Editable STEP file for the front shell
+- **[Gameboy Back.step](cad/Back_Plate.step)** – Editable STEP file for the back shell
+- **[Complete Fusion 360 Source](cad/RetroPie%20Gameboy%20CAD.f3d)** – Full project file including the shell, button board, and all components (for Autodesk Fusion 360)
 
 Can also print the buttons if needed, but I used original Gameboy buttons for this project. 
 
@@ -68,44 +124,49 @@ In the future, I intend to redesign both parts to properly mount all components.
 
 # Electronics & Wiring
 
-The electronic can be split into 3 subsystems: Power, Controls, and Display. Each subsystem has its own components and wiring requirements. Keep in mind the space constraints of the Gameboy shell when planning your wiring.
+The electronic can be split into 3 subsystems: Power, Controls, and Display. Each subsystem has its own components and wiring requirements. Keep in mind the space constraints of the Gameboy shell when planning your wiring. \
+<img src="images/wiring.png" alt="Wiring Diagram" width="500" />
+
+Full wiring diagram is available [here](Wiring_Diagram.pdf).
+
 ### 1. Power 
-Li-Po Battery -> Slide Switch -> LM2596 Step Down Converter -> Raspberry Pi 3B+ 5V VDC
+Li-Po Battery -> Slide Switch -> LM2596 Step Down Converter -> Raspberry Pi 3B+ 5V VDC \
+Fan -> Raspberry Pi 5V and GND Pins
 ### 2. Controls
 Gameboy Zero PCB Button Board -> Raspberry Pi GPIO Pins 
-| Button        | GPIO Pin |
-|---------------|----------|
-| A             | 8        |
-| B             | 9        |
+| Button        | Pin # |
+|---------------|-------|
+| A             | 3        |
+| B             | 5        |
 | X             | 7        |
-| Y             | 0        |
-| Start         | 2        |
-| Select        | 3        |
-| DPAD Up       | 21       |
-| DPAD Down     | 22       |
-| DPAD Left     | 23       |
-| DPAD Right    | 26       |
+| Y             | 11       |
+| Start         | 13       |
+| Select        | 15        |
+| DPAD Up       | 29       |
+| DPAD Down     | 31       |
+| DPAD Left     | 33       |
+| DPAD Right    | 32       |
 | GND           | GND      |
 
 Generic Push Buttons (L and R) -> Raspberry Pi GPIO Pins 
 
-| Button | GPIO Pin |
+| Button | Pin #|
 |--------|----------|
-| L      | 15       |
-| R      | 16       |
+| L      | 8       |
+| R      | 10       |
 | GND    | GND      |
 
 ### 3. Display 
 SPI TFT Display -> Raspberry Pi SPI Pins
 
-| Signal   | GPIO Pin |
-|----------|----------|
-| SDO (MISO)   | 13   |
-| SDI (MOSI)   | 12   |
-| SCK          | 14   |
-| DC           | 5    |
-| RESET        | 6    |
-| CS           | 10   |
+| Signal   | Pin # |
+|----------|-------|
+| SDO (MISO)   | 21   |
+| SDI (MOSI)   | 19   |
+| SCK          | 23   |
+| DC           | 18   |
+| RESET        | 22   |
+| CS           | 24   |
 | LED          | 5V   |
 | VCC          | 5V   |
 | GND          | GND  |
@@ -233,17 +294,27 @@ Check out this guide for a more in depth set up guide: [RetroPie on a Raspberry 
     - The ILI9341 display should show the RetroPie splash screen and menu.
     - If the display is not working, check the wiring and configuration settings in `/boot/config.txt`.
 
-# Performance
-
-- 30 FPS on the ILI9341 display
-- Stable performance for most retro games
-- Can run games from systems up to the PlayStation 1 era
-- Temperature remains below 60 °C under sustained load with active cooling
-
-
-From my testing, the Raspberry Pi 3B+ can run most retro games at a stable 30 FPS on the ILI9341 display. Game performance may vary depending on the game and emulator used. The Pi 3B+ is capable of running games from systems up to the PlayStation 1 era, including Wipeout 3 Omega Collection, which runs at 30 FPS with barely any frame drops.
-
 # Build Instructions
+
+As previously mentioned, the physical assembly of the Gameboy is quite simple. The components are "sandwiched" between the front and back shells, with no screws or fasteners required. The front shell has a cutout for the display, and the back cover holds all components in place.
+
+In the future, I plan to redesign the shell to properly mount all components, allowing for tighter assembly and easier disassembly. This will include proper mounting points for the display, buttons, and Raspberry Pi.
+
+But for now, here are the steps to assemble the Gameboy:
+
+1. **Print the 3D-printed parts** using the provided STL files. Ensure you have enough filament and a suitable printer.
+
+2. **Assemble the electronics** according to the wiring diagram. Ensure all connections are secure and insulated to prevent shorts. Use flexible wires to allow for easy assembly and disassembly. Try using heat shrink tubing or electrical tape to cover exposed wires. 
+
+3. **Install the software** on the Raspberry Pi as described in the Software Setup section. Ensure you have a keyboard connected for initial configuration.
+
+4. **Mount the components** inside the 3D-printed shell. 
+    - First place the display in the cutout on the front shell.
+    - Then place the Gameboy Zero PCB Button Board, align all front facing buttons with the button cutouts on the front shell.
+    - Next, place the battery along with the slide switch and LM2596 buck converter.
+    - Finally, place the Raspberry Pi 3B+ in the back shell, along with the L and R buttons.
+
+5. **Secure the back cover** to the front shell. 
 
 # Roadmap
 
@@ -273,14 +344,6 @@ The project works, I just need to resolder everything to organise the wires. Pro
 # Capabilities
 Can play retro games from multiple consoles upto the Playstation 1. This includes: Nintendo Systems (NES, SNES, GB, GBA, GBC), Sega Systems (Master System, Mega Drive) & the Playstation 1. Most systems before the PS1 should work. All thanks to the Retropie OS. Go to [Retropie Supported Systems](https://retropie.org.uk/docs/Supported-Systems/) page for more info.
 
-# Build
-### Electronics
-Microcontroller Board - Raspberry Pi 3B+  
-Battery Pack - [2S 7.4V 3000mAh LiPo](https://www.aliexpress.com/item/1005005797608566.html)  
-Display - [ILI9341 3.2inch 320x240 SPI TFT](https://www.aliexpress.com/item/1005003120684423.html)  
-Input - [Gameboy Zero PCB Button Board](https://www.aliexpress.com/item/32993474020.html)  
-Buttons - [Original Gameboy Rubber Pads and Buttons](https://www.aliexpress.com/item/1005002518901690.html)  
-Power Converter - [LM2596 Step Down Converter 3A](https://www.aliexpress.com/item/32653212622.html)  
 
 Wiring -  
 ![Wiring Diagram](https://github.com/rbat05/rpi3-gameboy/assets/66808770/6b5f8d53-e686-4ec6-9776-4ff5e800463e)
@@ -290,16 +353,3 @@ Modelled it all in Fusion 360, the shell was easy to design as a result. All fil
 <img src="https://github.com/rbat05/rpi3-gameboy/assets/66808770/3a3b7dc0-b6fc-4283-bc92-1005bdb71339" height="400">
 <img src="https://github.com/rbat05/rpi3-gameboy/assets/66808770/7125cb3c-61b7-4f58-b095-8a906cf64b9f" height="400">
 <img src="https://github.com/rbat05/rpi3-gameboy/assets/66808770/4fe74a1b-4942-4085-8385-94e479dfa0f6" height="400">  
-
-### Final Build
-
-# Photos  
-Working Prototype -  
-![Prototypevideofixed-ezgif com-video-to-gif-converter](https://github.com/rbat05/rpi3-gameboy/assets/66808770/83355c5b-f5fb-4920-92dd-f46e30624065)  
-Working Test Type -  
-<img src="https://github.com/rbat05/rpi3-gameboy/assets/66808770/52cf1761-f763-4323-8893-655a77a31283" height="400">  
-Test Type Internals -  
-<img src="https://github.com/rbat05/rpi3-gameboy/assets/66808770/9e683b5a-e6d0-4789-b8bd-c80be6dadb81" height="400">
-
-# Things to improve
-There is 1 big issue with this project, the power draw is too much. The pi 3b+ requires a 2.5A power source. There weren't any readily available step up modules (step up 1s 3.4v to 5v) that support that current value, so I had to use a 2s battery and step it down to 5v using the LM2596 module, the issue with this module is that it does not keep the voltage at 5v. When the battery voltage drops, the module's output voltage drops below 5v, which then undervolts the pi. As a result, the device can only be used for 20 minutes before the module needs to be adjusted to 5v again.
