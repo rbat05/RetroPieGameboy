@@ -60,7 +60,7 @@ From my testing, the Raspberry Pi 3B+ can run most retro games at a stable 30 FP
   <sub>Exploded View without Front Shell</sub>
 </p>
 
-[Design files](cad/Showcase_Drawings.pdf) available as PDFs in `\cad` folder.
+[Design files](cad/Showcase_Drawings.pdf) available as PDFs in `/cad` folder.
 
 # Bill of Materials
 | Category | Item | Description | Quantity | Price ($NZ, Approx.) |
@@ -92,18 +92,18 @@ The source file details the design of the Gameboy shell, including all dimension
 
 Infill and resolution settings for Ultimaker 2B+, set on "Fine" resolution.
 
-- **[Gameboy Front](cad/Top_Shell.stl)**
+- **[Gameboy Front.stl](cad/Top_Shell.stl)**
   <br>
-  <img src="images/front_shell_printing.png" width="350" alt="Gameboy Front Shell Printing" />
+  <img src="images/front_shell_printing.PNG" width="350" alt="Gameboy Front Shell Printing" />
   - **Print Settings:** 30% infill, 0.1 mm resolution, PLA
   - **Supports:** Not needed if printed on front face 
   - **Adhesion:** Enable adhesion for best result
   - **Material Used:** 52 g
   - **Print Time:** 12 hours
 
-- **[Gameboy Back Cover](cad/Back_Plate.stl)**
+- **[Gameboy Back Cover.stl](cad/Back_Plate.stl)**
   <br>
-  <img src="images/back_printing.png" width="350" alt="Gameboy Back Shell Printing" />
+  <img src="images/back_printing.PNG" width="350" alt="Gameboy Back Shell Printing" />
   - **Print Settings:** 20% infill, 0.1 mm resolution, PLA
   - **Supports:** Not needed if printed on back flat side
   - **Adhesion:** Not needed
@@ -341,15 +341,3 @@ This project is licensed under the GNU General Public License v3.0. You are free
 # Current Project Status
 The project works, I just need to resolder everything to organise the wires. Project currently on hold (as of 02/03/24).
 
-# Capabilities
-Can play retro games from multiple consoles upto the Playstation 1. This includes: Nintendo Systems (NES, SNES, GB, GBA, GBC), Sega Systems (Master System, Mega Drive) & the Playstation 1. Most systems before the PS1 should work. All thanks to the Retropie OS. Go to [Retropie Supported Systems](https://retropie.org.uk/docs/Supported-Systems/) page for more info.
-
-
-Wiring -  
-![Wiring Diagram](https://github.com/rbat05/rpi3-gameboy/assets/66808770/6b5f8d53-e686-4ec6-9776-4ff5e800463e)
-
-### CAD Modelling
-Modelled it all in Fusion 360, the shell was easy to design as a result. All files available in CAD folder.
-<img src="https://github.com/rbat05/rpi3-gameboy/assets/66808770/3a3b7dc0-b6fc-4283-bc92-1005bdb71339" height="400">
-<img src="https://github.com/rbat05/rpi3-gameboy/assets/66808770/7125cb3c-61b7-4f58-b095-8a906cf64b9f" height="400">
-<img src="https://github.com/rbat05/rpi3-gameboy/assets/66808770/4fe74a1b-4942-4085-8385-94e479dfa0f6" height="400">  
