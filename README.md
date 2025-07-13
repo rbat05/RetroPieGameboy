@@ -1,7 +1,20 @@
-# RetroPi Portable Gaming Console
+# RetroPie Portable Gaming Console
 A Raspberry Pi 3B+ Game Boy‑style build for plug‑and‑play retro gaming
 
-PHOTOS HERE MATE
+<p align="center">
+  <img src="images/gifs/Hero-ezgif.com-optimize.gif" alt="RetroPie Portable Gaming Console Hero Animation" width="250"/>
+  <br>
+    <img src="images/front_view.png" alt="Gameboy Front Showcase" width="400" style="margin:10px"/><br>
+</p>
+
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=aH5iZF9_xfY" target="_blank">
+    <img src="images/thumbnail.png" alt="RetroPie Portable Gaming Console Showcase" width="500"/>
+  </a>
+  <br>
+  <sub><b>Click the image above to watch the full demo on YouTube</b></sub>
+</p>
 
 # Table of Contents
 
@@ -19,6 +32,14 @@ PHOTOS HERE MATE
 
 # Overview
 This project documents the design and assembly of a hand‑held retro gaming console built around a Raspberry Pi 3B+ and housed in a custom 3D‑printed, Game Boy‑inspired chassis. The goal is a 100 % plug‑and‑play device capable of emulating systems up to the PlayStation 1 era while maintaining performance.
+
+### How it works:
+1. **Compute**: Raspberry Pi 3B+ running RetroPie OS
+2. **Controls**: Gameboy Zero PCB Button Board for main controls, with additional L and R buttons
+3. **Display**: 3.2″ ILI9341 SPI TFT display driven at 30 FPS via fbcp-ili9341 library
+4. **Power**: 2S 7.4V LiPo battery with LM2596 step-down converter for stable 5V output
+5. **Cooling**: Active thermal management with dual fans to keep CPU below 60 °C under load
+
 
 # Features
 
@@ -46,17 +67,17 @@ From my testing, the Raspberry Pi 3B+ can run most retro games at a stable 30 FP
 ![Gameboy Showcase](cad/Shell%20v12.gif)
 
 <p align="center">
-  <img src="images/front_showcase.png" alt="Gameboy Front Showcase" width="350" style="margin:10px"/><br>
+  <img src="images/front_showcase.png" alt="Gameboy Front Showcase" width="400" style="margin:10px"/><br>
   <sub>Front</sub>
   <br><br>
-  <img src="images/side_showcase.png" alt="Gameboy Side Showcase" width="350" style="margin:10px"/><br>
+  <img src="images/side_showcase.png" alt="Gameboy Side Showcase" width="400" style="margin:10px"/><br>
   <sub>Side</sub>
 </p>
 <p align="center">
-  <img src="images/Exploded.png" alt="Gameboy Exploded View" width="350" style="margin:10px"/><br>
+  <img src="images/Exploded.png" alt="Gameboy Exploded View" width="400" style="margin:10px"/><br>
   <sub>Exploded View</sub>
   <br><br>
-  <img src="images/Exploded_nofront.png" alt="Gameboy Exploded View without Front Shell" width="350" style="margin:10px"/><br>
+  <img src="images/Exploded_nofront.png" alt="Gameboy Exploded View without Front Shell" width="400" style="margin:10px"/><br>
   <sub>Exploded View without Front Shell</sub>
 </p>
 
@@ -337,7 +358,3 @@ Could be mitigated by using a lower power Raspberry Pi model, such as the Raspbe
 
 # License
 This project is licensed under the GNU General Public License v3.0. You are free to use, modify, and distribute this project as long as you adhere to the terms of the GPLv3 license.
-
-# Current Project Status
-The project works, I just need to resolder everything to organise the wires. Project currently on hold (as of 02/03/24).
-
